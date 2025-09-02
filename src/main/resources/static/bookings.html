@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garage Booking System - Manage Bookings</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo">🚗 GaragePro</a>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="bookings.html" class="nav-link">Bookings</a></li>
+                    <li><a href="new-booking.html" class="nav-link">New Booking</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Manage Bookings</h1>
+            <p>View and manage all your vehicle service appointments</p>
+            <a href="new-booking.html" class="btn btn-primary">Create New Booking</a>
+        </section>
+
+        <!-- Filters and Search -->
+        <section class="content-section">
+            <div class="filters-section">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search bookings..." class="form-control">
+                    <button id="searchBtn" class="btn btn-secondary">Search</button>
+                </div>
+                <div class="filter-controls">
+                    <select id="statusFilter" class="form-control">
+                        <option value="">All Status</option>
+                        <option value="PENDING">Pending</option>
+                        <option value="APPROVED">Approved</option>
+                        <option value="REJECTED">Rejected</option>
+                        <option value="COMPLETED">Completed</option>
+                    </select>
+                    <select id="sortBy" class="form-control">
+                        <option value="date">Sort by Date</option>
+                        <option value="status">Sort by Status</option>
+                        <option value="serviceType">Sort by Service</option>
+                    </select>
+                    <button id="refreshBtn" class="btn btn-secondary">Refresh</button>
+                </div>
+            </div>
+        </section>
+
+        <div id="bookings-container">
+            <div class="content-section text-center">
+                <div class="loading"></div>
+                <p>Loading bookings...</p>
+            </div>
+        </div>
+
+        <section class="content-section">
+            <h2 class="text-center">Booking Status Guide</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <span class="status-badge status-pending">PENDING</span>
+                    <p class="mt-2">Your booking is awaiting approval from our team</p>
+                </div>
+                
+                <div class="card">
+                    <span class="status-badge status-approved">APPROVED</span>
+                    <p class="mt-2">Your booking has been confirmed and scheduled</p>
+                </div>
+                
+                <div class="card">
+                    <span class="status-badge status-rejected">REJECTED</span>
+                    <p class="mt-2">Unfortunately, we couldn't accommodate this booking</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 GaragePro Vehicle Booking System. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

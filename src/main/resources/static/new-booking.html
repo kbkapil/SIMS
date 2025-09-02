@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garage Booking System - New Booking</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo">🚗 GaragePro</a>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="bookings.html" class="nav-link">Bookings</a></li>
+                    <li><a href="new-booking.html" class="nav-link">New Booking</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Create New Booking</h1>
+            <p>Schedule your vehicle service with our expert technicians</p>
+        </section>
+
+        <div class="content-section">
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label for="serviceType">Service Type *</label>
+                    <select id="serviceType" name="serviceType" class="form-control" required>
+                        <option value="">Select a service</option>
+                        <option value="Oil Change">Oil Change</option>
+                        <option value="Brake Service">Brake Service</option>
+                        <option value="Tire Rotation">Tire Rotation</option>
+                        <option value="Engine Tune-up">Engine Tune-up</option>
+                        <option value="Transmission Service">Transmission Service</option>
+                        <option value="Battery Replacement">Battery Replacement</option>
+                        <option value="AC Service">AC Service</option>
+                        <option value="Wheel Alignment">Wheel Alignment</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Service Date *</label>
+                    <input type="date" id="date" name="date" class="form-control" required 
+                           min="<?php echo date('Y-m-d'); ?>">
+                </div>
+
+                <div class="form-group">
+                    <label for="timeSlot">Time Slot *</label>
+                    <select id="timeSlot" name="timeSlot" class="form-control" required>
+                        <option value="">Select time slot</option>
+                        <option value="Morning (8:00 AM - 10:00 AM)">Morning (8:00 AM - 10:00 AM)</option>
+                        <option value="Late Morning (10:00 AM - 12:00 PM)">Late Morning (10:00 AM - 12:00 PM)</option>
+                        <option value="Afternoon (1:00 PM - 3:00 PM)">Afternoon (1:00 PM - 3:00 PM)</option>
+                        <option value="Late Afternoon (3:00 PM - 5:00 PM)">Late Afternoon (3:00 PM - 5:00 PM)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="vehicleNumber">Vehicle Number *</label>
+                    <input type="text" id="vehicleNumber" name="vehicleNumber" class="form-control" 
+                           placeholder="e.g., ABC1234" required pattern="[A-Z0-9]{6,8}">
+                    <small style="color: #666; font-size: 0.8rem;">Format: ABC1234 (6-8 alphanumeric characters)</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="vehicleType">Vehicle Type *</label>
+                    <select id="vehicleType" name="vehicleType" class="form-control" required>
+                        <option value="">Select vehicle type</option>
+                        <option value="Sedan">Sedan</option>
+                        <option value="SUV">SUV</option>
+                        <option value="Hatchback">Hatchback</option>
+                        <option value="Truck">Truck</option>
+                        <option value="Motorcycle">Motorcycle</option>
+                        <option value="Van">Van</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="model">Vehicle Model</label>
+                    <input type="text" id="model" name="model" class="form-control" 
+                           placeholder="e.g., Toyota Camry">
+                </div>
+
+                <div class="form-group">
+                    <label for="specialInstructions">Special Instructions</label>
+                    <textarea id="specialInstructions" name="specialInstructions" class="form-control" 
+                              rows="3" placeholder="Any specific requirements or notes..."></textarea>
+                </div>
+
+                <div id="booking-form">
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Create Booking
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <section class="content-section">
+            <h2 class="text-center">Service Information</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>⏰ Service Hours</h4>
+                    <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
+                    <p>Saturday: 9:00 AM - 4:00 PM</p>
+                    <p>Sunday: Closed</p>
+                </div>
+                
+                <div class="card">
+                    <h4>📞 Contact Info</h4>
+                    <p>Phone: (555) 123-4567</p>
+                    <p>Email: service@garagepro.com</p>
+                    <p>Address: 123 Garage Street, Indore</p>
+                </div>
+                
+                <div class="card">
+                    <h4>ℹ️ Important Notes</h4>
+                    <p>• Please arrive 15 minutes early</p>
+                    <p>• Bring your vehicle documents</p>
+                    <p>• Estimated service time: 2-4 hours</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 GaragePro Vehicle Booking System. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        // Set minimum date to today
+        document.getElementById('date').min = new Date().toISOString().split('T')[0];
+        
+        // Add form validation
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            const serviceType = document.getElementById('serviceType').value;
+            const date = document.getElementById('date').value;
+            const timeSlot = document.getElementById('timeSlot').value;
+            const vehicleNumber = document.getElementById('vehicleNumber').value;
+            const vehicleType = document.getElementById('vehicleType').value;
+            
+            if (!serviceType || !date || !timeSlot || !vehicleNumber || !vehicleType) {
+                e.preventDefault();
+                alert('Please fill in all required fields marked with *');
+                return false;
+            }
+        });
+    </script>
+</body>
+</html>
