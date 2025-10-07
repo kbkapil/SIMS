@@ -1,5 +1,6 @@
 package com.example.vehiclebooking.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -24,11 +25,13 @@ public class BookingController {
     }
 
     @GetMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public List<Booking> getAllBookings() {
         return bookingRepository.findAll();
     }
 
     @PutMapping("/{id}/approve")
+    @PreAuthorize("hasRole('ADMIN')")
     public Booking approveBooking(@PathVariable Long id) {
         Booking booking = bookingRepository.findById(id).orElseThrow();
         booking.setStatus("APPROVED");
@@ -36,6 +39,7 @@ public class BookingController {
     }
 
     @PutMapping("/{id}/reject")
+    @PreAuthorize("hasRole('ADMIN')")
     public Booking rejectBooking(@PathVariable Long id) {
         Booking booking = bookingRepository.findById(id).orElseThrow();
         booking.setStatus("REJECTED");

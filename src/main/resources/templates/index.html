@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garage Booking System - Home</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="logo">🚗 GaragePro</a>
+                <ul class="nav-links">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li th:if="${role == 'ROLE_ADMIN'}"><a href="/bookings.html" class="nav-link">Bookings</a></li>
+                    <li th:if="${role == 'ROLE_ADMIN'}"><a href="/new-booking.html" class="nav-link">New Booking</a></li>
+                    <li th:if="${username != null}">
+                        <span class="nav-link">Welcome, <span th:text="${username}"></span> (<span th:text="${role}"></span>)</span>
+                    </li>
+                    <li th:if="${username != null}">
+                        <form th:action="@{/logout}" method="post" style="display: inline;">
+                            <button type="submit" class="btn btn-link nav-link">Logout</button>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Welcome to GaragePro</h1>
+            <p>Your trusted partner for vehicle maintenance and service booking</p>
+            <div class="btn-group">
+                <a th:if="${role == 'ROLE_ADMIN'}" href="/bookings.html" class="btn btn-primary">View Bookings</a>
+                <a th:if="${role == 'ROLE_ADMIN'}" href="/new-booking.html" class="btn btn-success ml-2">Book Service</a>
+            </div>
+        </section>
+
+        <section class="card-grid">
+            <div class="card pulse">
+                <h3>🛠️ Quick Service</h3>
+                <p>Fast and reliable vehicle maintenance with our expert mechanics</p>
+            </div>
+
+            <div class="card pulse" style="animation-delay: 0.2s;">
+                <h3>📅 Easy Booking</h3>
+                <p>Schedule your service appointments online in just a few clicks</p>
+            </div>
+
+            <div class="card pulse" style="animation-delay: 0.4s;">
+                <h3>⚡ Real-time Updates</h3>
+                <p>Track your booking status and get instant notifications</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="text-center">Why Choose GaragePro?</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>Expert Technicians</h4>
+                    <p>Our certified mechanics provide top-quality service for all vehicle types</p>
+                </div>
+
+                <div class="card">
+                    <h4>Transparent Pricing</h4>
+                    <p>No hidden costs - know exactly what you're paying for upfront</p>
+                </div>
+
+                <div class="card">
+                    <h4>Quality Parts</h4>
+                    <p>We use only genuine and high-quality parts for all repairs</p>
+                </div>
+
+                <div class="card">
+                    <h4>24/7 Support</h4>
+                    <p>Round-the-clock customer service for all your needs</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 GaragePro Vehicle Booking System. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>
